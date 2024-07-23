@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //setting port and make sure it works
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`app is listening on Port ${port}`);
 });
@@ -21,7 +21,7 @@ app.listen(port, () => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 //connect mongoose
-const dbURL = 'mongodb://127.0.0.1:27017/yelp-camp';
+const dbURL = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
 const mongoose = require('mongoose');
 main().catch((err) => console.log(err));
 async function main() {
@@ -52,17 +52,16 @@ app.engine('ejs', engine);
 //setting up session and config
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const secret = process.env.SECRET || 'asecretkey';
 const storeConfig = {
   mongoUrl: dbURL,
   touchAfter: 24 * 3600,
-  crypto: {
-    secret: 'asecretkey'
-  }
-}
+  crypto: { secret },
+};
 const sessionConfig = {
   store: MongoStore.create(storeConfig),
   name: 'camp',
-  secret: 'asecretkey',
+  secret,
   resave: false,
   saveUninitialized: false,
   cookie: {
