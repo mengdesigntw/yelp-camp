@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="d-none d-md-block col"></div>
+  <div class="col col-md-6">
+    <h1 class="mb-3">Add new camp</h1>
+    <form action="/campgrounds" method="Post" enctype="multipart/form-data" class="mb-3 needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="campground[title]" aria-describedby="title" required />
+        <div class="invalid-feedback">Please enter a title</div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="campground[location]" required />
+        <div class="invalid-feedback">Please enter a location</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="campground[description]" class="form-control" id="description" rows="3" required></textarea>
+        <div class="invalid-feedback">Please enter some description</div>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price per tent</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="price" name="campground[price]" required />
+          <div class="invalid-feedback">The price should greater than 0</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Campground image</label>
+        <input type="file" name="image" class="form-control" id="image" multiple/>
+        <div class="invalid-feedback">Please upload at lease one image</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Campground</button>
+      <a class="btn btn-light" href="/campgrounds" role="button">Cancel</a>
+    </form>
+  </div>
+  <div class="d-none d-md-block col"></div>
+</div>

@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+  <div class="d-none d-md-block col"></div>
+  <div class="col col-md-6">
+    <h1 class="my-3">Log in</h1>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <!-- <h5 class="card-title">Log in</h5> -->
+        <form action="/login" method="Post" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required autofocus />
+            <div class="invalid-feedback">Please enter your username</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required />
+            <div class="invalid-feedback">Please enter your password</div>
+          </div>
+          <div class="d-grid pt-3">
+            <button type="submit" class="btn btn-primary mb-3">Log in</button>
+            <div class="d-flex">
+              <p class="me-2">Do not have an account?</p>
+            <a class="link-underline link-underline-opacity-50 link-offset-2" href="/register">Sign up instead</a>
+          </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="d-none d-md-block col"></div>
+</div>
